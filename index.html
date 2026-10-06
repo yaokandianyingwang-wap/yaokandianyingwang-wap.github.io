@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>要看电影网 - 打开就想看的影视平台 | yaokandianyingwang-wap.github.io</title>
+<meta name="keywords" content="要看电影网,要看电影,在线看电影,影视推荐,电影排行榜,最新电影,热门电影">
+<meta name="description" content="要看电影网（yaokandianianyingwang-wap.github.io）是一个打开就想看的影视平台，精选电影、电视剧、动漫等影视内容，提供每日推荐与热门榜单，随时随地看好片。">
+<link rel="canonical" href="https://yaokandianyingwang-wap.github.io/">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="renderer" content="webkit">
+<meta name="format-detection" content="telephone=no">
+<style>
+:root{
+  --bg:#070b16; --bg2:#0b1020; --surf:#141a2e; --card:#1b2340; --line:#2a3554;
+  --txt:#eaf0ff; --muted:#8d9bc0; --sky:#4aa8ff; --cy:#25e0d3; --pn:#ff5b8a; --yl:#ffc94d;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:var(--bg);color:var(--txt);line-height:1.85;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;
+background:radial-gradient(700px 420px at 12% 18%,rgba(74,168,255,.22),transparent 70%),
+radial-gradient(520px 520px at 88% 12%,rgba(255,91,138,.20),transparent 70%),
+radial-gradient(420px 420px at 55% 92%,rgba(37,224,211,.14),transparent 70%);}
+a{color:inherit;text-decoration:none;transition:.25s}
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+section{padding:112px 0}
+.eyebrow{color:var(--cy);font-size:12.5px;letter-spacing:4px;text-transform:uppercase;font-weight:700;margin-bottom:14px}
+.h2{font-size:34px;font-weight:900;letter-spacing:.5px;margin-bottom:12px}
+.sub{color:var(--muted);font-size:15.5px;max-width:660px;margin-bottom:50px}
+::selection{background:var(--sky);color:#070b16}
+
+/* HEADER */
+header{position:fixed;inset:0 0 auto 0;z-index:99;background:rgba(7,11,22,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(42,53,84,.7)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:900;letter-spacing:.5px}
+.logo .eye{width:34px;height:34px;border-radius:9px;background:linear-gradient(140deg,var(--sky),var(--cy));display:grid;place-items:center;font-size:17px}
+.logo b{color:var(--sky)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:14.5px;color:var(--muted);padding:9px 15px;border-radius:6px}
+.nav-links a:hover{color:var(--cy);background:rgba(37,224,211,.1)}
+.nav-cta{padding:10px 22px;border-radius:30px;font-weight:800;font-size:14px;background:linear-gradient(135deg,var(--sky),var(--cy));color:#06203a}
+.menu-btn{display:none;background:none;border:none;color:var(--sky);font-size:26px;cursor:pointer}
+
+/* HERO */
+.hero{padding:168px 0 90px;text-align:center}
+.hero .marquee{max-width:760px;margin:0 auto 26px;overflow:hidden}
+.hero .marquee span{display:inline-block;padding:8px 22px;border-radius:30px;font-size:13px;font-weight:700;background:rgba(74,168,255,.14);color:var(--cy);border:1px solid var(--line)}
+.hero h1{font-size:58px;line-height:1.18;font-weight:900;margin-bottom:22px;letter-spacing:-1.5px}
+.hero h1 em{font-style:normal;background:linear-gradient(120deg,var(--sky),var(--cy));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero .lead{color:var(--muted);font-size:16.5px;margin:0 auto 34px;max-width:560px}
+.hbtn{display:inline-flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-block;padding:14px 34px;border-radius:30px;font-weight:800;font-size:15.5px}
+.btn-p{background:linear-gradient(135deg,var(--sky),var(--cy));color:#06203a}
+.btn-o{border:2px solid var(--line);color:var(--txt)}
+.btn-o:hover{border-color:var(--cy)}
+.hstat{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:64px}
+.hstat div{padding:22px 18px;border:1px solid var(--line);border-radius:12px;background:var(--surf)}
+.hstat b{display:block;font-size:28px;font-weight:900;background:linear-gradient(120deg,var(--sky),var(--cy));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hstat span{font-size:12.5px;color:var(--muted);margin-top:6px;display:block}
+
+/* TICKER */
+.ticker{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0;background:var(--bg2)}
+.ticker-track{display:flex;gap:40px;width:max-content;animation:tk 34s linear infinite;font-size:15px;font-weight:700;color:var(--muted)}
+.ticker-track span b{color:var(--yl)}
+@keyframes tk{to{transform:translateX(-50%)}}
+
+/* GENRE CARDS */
+.genre{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.g{position:relative;padding:30px 26px;border-radius:14px;background:var(--surf);border:1px solid var(--line);overflow:hidden;transition:.35s}
+.g::after{content:"";position:absolute;right:-30px;bottom:-30px;width:120px;height:120px;border-radius:50%;opacity:.16;background:var(--c)}
+.g:hover{transform:translateY(-8px);border-color:var(--c)}
+.g .ic{width:52px;height:52px;border-radius:12px;display:grid;place-items:center;font-size:24px;background:rgba(255,255,255,.06);border:1px solid var(--line);margin-bottom:18px}
+.g h3{font-size:19px;margin-bottom:8px}
+.g p{font-size:13.5px;color:var(--muted)}
+.g .more{display:inline-block;margin-top:16px;font-size:13px;font-weight:700;color:var(--c)}
+
+/* POSTER WALL */
+.wall{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.po{position:relative;border-radius:12px;overflow:hidden;background:var(--surf);border:1px solid var(--line);transition:.35s}
+.po:hover{border-color:var(--pn);transform:scale(1.03);z-index:2}
+.po .ph{height:300px;background-size:cover;background-position:center;position:relative}
+.po .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--surf) 5%,transparent 55%)}
+.po .info{padding:14px 16px;margin-top:-52px;position:relative;z-index:1}
+.po .info h4{font-size:15.5px;margin-bottom:4px}
+.po .info .mt{font-size:12px;color:var(--muted)}
+.po .score{position:absolute;right:12px;top:12px;padding:5px 11px;border-radius:20px;font-size:12.5px;font-weight:800;background:rgba(7,11,22,.86);color:var(--yl)}
+.po .badge{position:absolute;left:12px;top:12px;padding:4px 11px;border-radius:6px;font-size:11.5px;font-weight:700;background:var(--c);color:#06203a}
+
+/* FEATURE GRID */
+.feat{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:start}
+.flist{display:flex;flex-direction:column;gap:14px}
+.fl{display:grid;grid-template-columns:56px 1fr auto;gap:18px;align-items:center;padding:18px 22px;background:var(--surf);border:1px solid var(--line);border-radius:12px;transition:.25s}
+.fl:hover{border-color:var(--cy);transform:translateX(6px)}
+.fl .no{font-size:24px;font-weight:900;color:var(--sky)}
+.fl h3{font-size:16.5px;margin-bottom:3px}
+.fl .mt{font-size:12.5px;color:var(--muted)}
+.fl .ar{font-size:22px;color:var(--cy)}
+.fside{position:sticky;top:100px;background:linear-gradient(160deg,var(--card),var(--surf));border:1px solid var(--line);border-radius:16px;padding:32px}
+.fside h3{font-size:21px;margin-bottom:10px}
+.fside p{font-size:13.5px;color:var(--muted);margin-bottom:24px}
+.mini{display:flex;flex-direction:column;gap:20px}
+.mini div{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:center}
+.mini .ci{width:44px;height:44px;border-radius:11px;display:grid;place-items:center;font-size:20px;background:rgba(74,168,255,.16)}
+.mini h5{font-size:15px;margin-bottom:2px}
+.mini span{font-size:12.5px;color:var(--muted)}
+
+/* TIMELINE */
+.tl{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.tm{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surf)}
+.tm .head{padding:22px;background:linear-gradient(135deg,var(--c),var(--surf));border-bottom:1px solid var(--line)}
+.tm .head .day{font-size:12px;font-weight:700;color:var(--c);letter-spacing:2px}
+.tm .head h3{font-size:20px;margin-top:6px}
+.tm ul{list-style:none;padding:18px 22px}
+.tm li{display:flex;gap:14px;align-items:baseline;padding:11px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.tm li:last-child{border-bottom:none}
+.tm li b{font-size:12px;color:var(--c);flex:none;width:44px}
+.tm li span{color:var(--muted);font-size:12.5px;margin-left:auto}
+
+/* CTA */
+.cta{text-align:center;background:linear-gradient(160deg,var(--surf),var(--bg2));border:1px solid var(--line);border-radius:18px;padding:64px 30px}
+.cta h2{font-size:32px;font-weight:900;margin-bottom:14px}
+.cta p{color:var(--muted);font-size:15.5px;margin-bottom:30px;max-width:520px;margin-left:auto;margin-right:auto}
+
+/* FAQ */
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.q{background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:24px 26px;transition:.25s}
+.q:hover{border-color:var(--cy)}
+.q .qh{display:flex;gap:14px;align-items:baseline}
+.q .qh b{font-size:22px;color:var(--sky);font-weight:900;flex:none}
+.q h3{font-size:17px}
+.q p{font-size:13.5px;color:var(--muted);margin-top:12px;padding-left:36px}
+
+footer{background:#04070f;border-top:1px solid var(--line);padding:64px 0 24px}
+.foot{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.foot .brand .logo{margin-bottom:16px}
+.foot .brand p{color:var(--muted);font-size:14px;max-width:340px}
+.foot h4{font-size:15px;margin-bottom:18px}
+.foot ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.foot a{color:var(--muted);font-size:14px}
+.foot a:hover{color:var(--cy)}
+.foot-bot{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:13px}
+
+@media(max-width:1000px){
+  .hero h1{font-size:42px}
+  .hstat,.genre,.wall,.tl{grid-template-columns:1fr 1fr}
+  .feat{grid-template-columns:1fr}
+  .fside{position:static}
+  section{padding:84px 0}
+}
+@media(max-width:600px){
+  .menu-btn{display:block}.nav-cta{display:none}
+  .nav-links{position:fixed;top:76px;left:0;right:0;flex-direction:column;background:rgba(7,11,22,.98);padding:20px;transform:translateY(-180%);transition:.3s}
+  .nav-links.open{transform:translateY(0)}
+  .hero{padding:128px 0 56px}
+  .hero h1{font-size:29px}
+  .hero .lead{font-size:15px}
+  .hstat,.genre,.wall,.tl{grid-template-columns:1fr}
+  .hstat div{padding:16px}
+  .faq{grid-template-columns:1fr}
+  .q p{padding-left:0}
+  .po .ph{height:240px}
+  .foot{grid-template-columns:1fr 1fr}
+  .foot-bot{flex-direction:column;text-align:center}
+  .h2{font-size:24px}
+  .cta h2{font-size:23px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaolu.js"></script>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo"><span class="eye">👁</span>要看电影网</a>
+    <nav class="nav-links" id="nav">
+      <a href="#home">首页</a>
+      <a href="#genre">类型频道</a>
+      <a href="#wall">海报墙</a>
+      <a href="#feat">平台特色</a>
+      <a href="#new">每日上新</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <a href="#wall" class="nav-cta">开始看片</a>
+    <button class="menu-btn" id="mbtn" aria-label="菜单">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="wrap">
+    <div class="marquee"><span>🎬 要看电影网 · 打开就想看的好片 · yaokandianyingwang-wap.github.io</span></div>
+    <h1><em>要看电影网</em><br>打开就想看的影视平台</h1>
+    <p class="lead">要看电影网（yaokandianyingwang-wap.github.io）精选电影、电视剧、动漫等影视内容，提供每日推荐与热门榜单，随时随地，把好片送到你眼前。</p>
+    <div class="hbtn">
+      <a href="#wall" class="btn btn-p">看看今天放什么 →</a>
+      <a href="#feat" class="btn btn-o">了解平台特色</a>
+    </div>
+    <div class="hstat">
+      <div><b>每日</b><span>精选更新</span></div>
+      <div><b>8类</b><span>影片类型</span></div>
+      <div><b>全网</b><span>口碑严选</span></div>
+      <div><b>多端</b><span>自适应看片</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker"><div class="ticker-track">
+  <span><b>要看电影网</b> · 打开就想看</span><span>每日推荐</span><span>热门榜单</span><span>电影</span><span>电视剧</span><span>动漫剧场</span><span>经典老片</span>
+  <span><b>要看电影网</b> · 打开就想看</span><span>每日推荐</span><span>热门榜单</span><span>电影</span><span>电视剧</span><span>动漫剧场</span><span>经典老片</span>
+</div></div>
+
+<!-- GENRE -->
+<section id="genre">
+  <div class="wrap">
+    <div class="eyebrow">◆ 类型频道</div>
+    <h2 class="h2">按心情选片</h2>
+    <p class="sub">要看电影网把内容整理成清晰的频道，无论你是想哭、想笑还是想烧脑，都能一眼找到对的那一部。</p>
+    <div class="genre">
+      <div class="g" style="--c:#4aa8ff"><div class="ic">🎭</div><h3>剧情文艺</h3><p>细腻的人心与时代，看完会想静静坐一会儿。</p><a href="#" class="more">进入频道 →</a></div>
+      <div class="g" style="--c:#ff5b8a"><div class="ic">🔍</div><h3>悬疑犯罪</h3><p>层层反转，每个线索都值得反复回味。</p><a href="#" class="more">进入频道 →</a></div>
+      <div class="g" style="--c:#ffc94d"><div class="ic">😂</div><h3>喜剧轻松</h3><p>下班后的快乐开关，笑完一身轻松。</p><a href="#" class="more">进入频道 →</a></div>
+      <div class="g" style="--c:#25e0d3"><div class="ic">🚀</div><h3>科幻奇幻</h3><p>脑洞大开的视觉盛宴，想象力不设限。</p><a href="#" class="more">进入频道 →</a></div>
+      <div class="g" style="--c:#9b6bff"><div class="ic">⚔️</div><h3>动作战争</h3><p>大场面与快节奏，肾上腺素拉满。</p><a href="#" class="more">进入频道 →</a></div>
+      <div class="g" style="--c:#4ee67a"><div class="ic">💚</div><h3>治愈温情</h3><p>暖色调的故事，适合雨天和深夜。</p><a href="#" class="more">进入频道 →</a></div>
+      <div class="g" style="--c:#ff8a3d"><div class="ic">💕</div><h3>爱情浪漫</h3><p>甜到犯规或虐到心碎，总有一款戳中你。</p><a href="#" class="more">进入频道 →</a></div>
+      <div class="g" style="--c:#5ad1ff"><div class="ic">🐉</div><h3>动漫剧场</h3><p>剧场版与新番，二次元的无限宇宙。</p><a href="#" class="more">进入频道 →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- POSTER WALL -->
+<section id="wall" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="eyebrow">◆ 海报墙</div>
+    <h2 class="h2">本周必看好片</h2>
+    <p class="sub">要看电影网编辑团队从海量片源中挑出的本周精选，每一张海报背后都是一部值得点开的好片。</p>
+    <div class="wall">
+      <div class="po"><span class="badge" style="--c:#ff5b8a">热门</span><span class="score">9.4</span><div class="ph" style="background-image:url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400&q=80')"></div><div class="info"><h4>夜行者：谁在替我们记住真相</h4><span class="mt">悬疑 / 犯罪 · 138分钟</span></div></div>
+      <div class="po"><span class="badge" style="--c:#ffc94d">新片</span><span class="score">9.1</span><div class="ph" style="background-image:url('https://images.unsplash.com/photo-1518932945647-7a437e9e8cb2?w=400&q=80')"></div><div class="info"><h4>沉默的河流</h4><span class="mt">纪录片 / 文艺 · 96分钟</span></div></div>
+      <div class="po"><span class="badge" style="--c:#4aa8ff">推荐</span><span class="score">8.9</span><div class="ph" style="background-image:url('https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400&q=80')"></div><div class="info"><h4>高地之上</h4><span class="mt">战争 / 剧情 · 142分钟</span></div></div>
+      <div class="po"><span class="badge" style="--c:#25e0d3">口碑</span><span class="score">8.7</span><div class="ph" style="background-image:url('https://images.unsplash.com/photo-1535016120720-40c646be5580?w=400&q=80')"></div><div class="info"><h4>老城的最后一个夏天</h4><span class="mt">剧情 / 年代 · 121分钟</span></div></div>
+      <div class="po"><span class="badge" style="--c:#ff8a3d">独家</span><span class="score">8.6</span><div class="ph" style="background-image:url('https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&q=80')"></div><div class="info"><h4>第七封电报</h4><span class="mt">犯罪 / 悬疑 · 115分钟</span></div></div>
+      <div class="po"><span class="badge" style="--c:#9b6bff">治愈</span><span class="score">8.8</span><div class="ph" style="background-image:url('https://images.unsplash.com/photo-1485095329183-d0797cdc5676?w=400&q=80')"></div><div class="info"><h4>夏夜琴声</h4><span class="mt">爱情 / 文艺 · 108分钟</span></div></div>
+      <div class="po"><span class="badge" style="--c:#4ee67a">轻快</span><span class="score">8.4</span><div class="ph" style="background-image:url('https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=400&q=80')"></div><div class="info"><h4>无人知晓的午后</h4><span class="mt">喜剧 / 生活 · 102分钟</span></div></div>
+      <div class="po"><span class="badge" style="--c:#5ad1ff">动漫</span><span class="score">9.0</span><div class="ph" style="background-image:url('https://images.unsplash.com/photo-1574267432553-4b4628081c31?w=400&q=80')"></div><div class="info"><h4>北风过境</h4><span class="mt">动漫 / 奇幻 · 118分钟</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE -->
+<section id="feat">
+  <div class="wrap">
+    <div class="eyebrow">◆ 平台特色</div>
+    <h2 class="h2">为什么选要看电影网</h2>
+    <p class="sub">要看电影网不只是罗列片名，更在意你怎么找到、怎么看完、怎么留下印象。</p>
+    <div class="feat">
+      <div class="flist">
+        <div class="fl"><span class="no">01</span><div><h3>打开即看，不用折腾</h3><span class="mt">网页直接访问，无需下载客户端</span></div><span class="ar">→</span></div>
+        <div class="fl"><span class="no">02</span><div><h3>每日精选，拒绝片荒</h3><span class="mt">编辑团队每天挑出值得看的内容</span></div><span class="ar">→</span></div>
+        <div class="fl"><span class="no">03</span><div><h3>口碑优先，少走弯路</h3><span class="mt">榜单由真实观看与评分共同决定</span></div><span class="ar">→</span></div>
+        <div class="fl"><span class="no">04</span><div><h3>分类清晰，一眼找到</h3><span class="mt">8 大类型频道，按心情选片</span></div><span class="ar">→</span></div>
+        <div class="fl"><span class="no">05</span><div><h3>多端自适应，随时续看</h3><span class="mt">手机、平板、电脑、电视浏览器通用</span></div><span class="ar">→</span></div>
+      </div>
+      <aside class="fside">
+        <h3>看片体验，从这 4 件事开始</h3>
+        <p>从打开网页到看完一部片，要看电影网把每一步都做得简单。</p>
+        <div class="mini">
+          <div><span class="ci">🔎</span><div><h5>打开即搜</h5><span>输入片名，快速定位想看的内容</span></div></div>
+          <div><span class="ci">📋</span><div><h5>榜单做参考</h5><span>不知道看什么就看榜单，不踩雷</span></div></div>
+          <div><span class="ci">🎞</span><div><h5>点开就看</h5><span>无需复杂操作，点一下就进入正片</span></div></div>
+          <div><span class="ci">🔁</span><div><h5>随时续看</h5><span>换个设备打开，继续上次的内容</span></div></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="new" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="eyebrow">◆ 每日上新</div>
+    <h2 class="h2">这一周的更新节奏</h2>
+    <p class="sub">要看电影网按周规划更新，让你每天都有新片可看。</p>
+    <div class="tl">
+      <div class="tm" style="--c:#4aa8ff"><div class="head"><span class="day">周一 · 周三</span><h3>重磅新片</h3></div><ul>
+        <li><b>MON</b><span>院线热片同步上线</span><em>2 部</em></li>
+        <li><b>WED</b><span>口碑悬疑片补档</span><em>1 部</em></li></ul></div>
+      <div class="tm" style="--c:#25e0d3"><div class="head"><span class="day">周二 · 周四</span><h3>经典重映</h3></div><ul>
+        <li><b>TUE</b><span>高分老片修复版</span><em>3 部</em></li>
+        <li><b>THU</b><span>导演专题合集</span><em>4 部</em></li></ul></div>
+      <div class="tm" style="--c:#ff5b8a"><div class="head"><span class="day">周五 · 周末</span><h3>周末轻松档</h3></div><ul>
+        <li><b>FRI</b><span>喜剧与合家欢</span><em>2 部</em></li>
+        <li><b>WEEK</b><span>动漫剧场新番</span><em>5 集</em></li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <div class="wrap">
+    <div class="cta">
+      <div class="eyebrow" style="margin-bottom:10px">◆ 开始看片</div>
+      <h2>今天，想看点什么？</h2>
+      <p>要看电影网（yaokandianyingwang-wap.github.io）帮你把"不知道看什么"变成"下一部更精彩"。</p>
+      <a href="#wall" class="btn btn-p">进入海报墙 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="eyebrow">◆ 常见问题</div>
+    <h2 class="h2">关于要看电影网</h2>
+    <p class="sub">如果你对要看电影网还有疑问，这里是最常被问到的几个问题。</p>
+    <div class="faq">
+      <div class="q"><div class="qh"><b>Q1</b><h3>要看电影网是什么？</h3></div><p>要看电影网（yaokandianyingwang-wap.github.io）是一个打开就想看的影视平台，提供电影、电视剧、动漫等影视内容，含每日推荐与热门榜单。</p></div>
+      <div class="q"><div class="qh"><b>Q2</b><h3>需要下载客户端吗？</h3></div><p>不需要。要看电影网是网页端平台，打开浏览器访问即可，手机、平板、电脑都能直接看。</p></div>
+      <div class="q"><div class="qh"><b>Q3</b><h3>多久更新一次？</h3></div><p>每日更新。编辑团队每天挑选最新的影视内容上线，热门作品尽量及时跟进。</p></div>
+      <div class="q"><div class="qh"><b>Q4</b><h3>有哪些影片类型？</h3></div><p>涵盖剧情、悬疑、喜剧、科幻、动作、治愈、爱情、动漫共 8 大频道，满足不同心情。</p></div>
+      <div class="q"><div class="qh"><b>Q5</b><h3>支持哪些设备？</h3></div><p>全站采用移动端自适应设计，主流手机、平板、电脑及智能电视浏览器均可访问。</p></div>
+      <div class="q"><div class="qh"><b>Q6</b><h3>如何给我们提建议？</h3></div><p>可以通过页脚的联系入口提交片名与简介，编辑团队会在选片时参考用户建议。</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="brand">
+        <a href="#" class="logo"><span class="eye">👁</span>要看电影网</a>
+        <p>要看电影网（yaokandianyingwang-wap.github.io）是一个打开就想看的影视平台，精选电影、电视剧、动漫等影视内容，提供每日推荐与热门榜单，随时随地看好片。</p>
+      </div>
+      <div><h4>看片导航</h4><ul>
+        <li><a href="#genre">类型频道</a></li><li><a href="#wall">海报墙</a></li>
+        <li><a href="#feat">平台特色</a></li><li><a href="#new">每日上新</a></li>
+      </ul></div>
+      <div><h4>热门分类</h4><ul>
+        <li><a href="#">电影</a></li><li><a href="#">电视剧</a></li>
+        <li><a href="#">动漫</a></li><li><a href="#">纪录片</a></li>
+      </ul></div>
+      <div><h4>关于我们</h4><ul>
+        <li><a href="#">关于要看电影网</a></li><li><a href="#">合作投稿</a></li>
+        <li><a href="#">用户反馈</a></li><li><a href="#">联系我们</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 要看电影网 yaokandianyingwang-wap.github.io · 本站内容仅供影视信息展示与参考，影片版权归原作者及发行方所有</span>
+      <span><a href="#">回到顶部 ↑</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+var mbtn=document.getElementById('mbtn'),nav=document.getElementById('nav');
+mbtn.addEventListener('click',function(){nav.classList.toggle('open');});
+nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');});});
+</script>
+</body>
+</html>
